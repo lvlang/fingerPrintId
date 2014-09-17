@@ -15,25 +15,6 @@ public class ReadCom{
 			if(portId.getPortType()==CommPortIdentifier.PORT_SERIAL){
 				if(portId.getName().equals("COM1")){
 					System.out.println(portId.getName());
-					try{
-						serialPort = (SerialPort)portId.open("SimpleWriteApp", 2000);
-					}
-					catch(PortInUseException e){}
-					try{
-						outputStream = serialPort.getOutputStream();
-					}
-					catch(IOException e){}
-					try{
-						serialPort.setSerialPortParams(57600, 
-								SerialPort.DATABITS_8,
-								SerialPort.STOPBITS_1,
-								SerialPort.PARITY_NONE);	
-					}
-					catch(UnsupportedCommOperationException e){}
-					try{
-						outputStream.write("yes".getBytes());
-					}
-					catch(IOException e){}
 					serialPort.close();
 				}
 			}
